@@ -10,6 +10,6 @@ to render the result in the browser through WebAssembly.
 
 ## Technologies used
 
-* [`JavaScript`](https://github.com/rustwasm/wasm-bindgen) for rendering the simulation in the browser
+* [`JavaScript`](https://www.ecma-international.org/memento/tc39.htmn) for rendering the simulation in the browser
 * [`Rust`](https://www.rust-lang.org/) for computing the simulation
-* [`WebAssembly`](https://github.com/rustwasm/wee_alloc)
+* [`WebAssembly`](https://webassembly.org/)
