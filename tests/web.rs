@@ -40,7 +40,7 @@ pub fn test_tick() {
 
     // This is what the spaceship should look like
     // after one tick in our universe
-    let expected_spaceship = expected_spaceship();
+    let expected_universe = expected_spaceship();
 
     // Call 'tick' and then see if the cells in the Universes are the same
     input_universe.tick();
