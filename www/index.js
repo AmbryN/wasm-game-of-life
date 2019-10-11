@@ -64,6 +64,22 @@ const drawCells = () => {
     ctx.stroke();
 }
 
+const resetButton = document.getElementById("reset-btn");
+
+const reset = () => {
+    universe.reset()
+}
+
+resetButton.addEventListener('click', reset);
+
+const initialButton = document.getElementById('initial-btn');
+
+const setInitial = () => {
+    universe.initial_state()
+}
+
+initialButton.addEventListener('click', setInitial);
+
 const playPauseButton = document.getElementById("play-pause");
 const range = document.getElementById('range');
 const rangeValue = document.getElementById('range-value');

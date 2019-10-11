@@ -30,6 +30,10 @@ impl Cell {
             Cell::Alive => Cell::Dead,
         };
     }
+
+    fn to_dead(&mut self) {
+        *self = Cell::Dead;
+    }
 }
 
 #[wasm_bindgen]
@@ -67,6 +71,33 @@ impl Universe {
     pub fn toggle_cell(&mut self, row: u32, column: u32) {
         let idx = self.get_index(row, column);
         self.cells[idx].toggle();
+    }
+
+    pub fn set_to_dead(&mut self, row: u32, column: u32) {
+        let idx = self.get_index(row, column);
+        self.cells[idx].to_dead();
+    }
+
+    pub fn reset(&mut self) {
+        for col in 0..self.width {
+            for row in 0..self.height {
+                self.set_to_dead(row, col);
+            }
+        }
+    }
+
+    pub fn initial_state(&mut self) {
+        let cells = (0..self.width * self.height)
+            .map(|i| {
+                if i % 2 == 0 || i % 7 == 0 {
+                    Cell::Alive
+                } else {
+                    Cell::Dead
+                }
+            })
+            .collect();
+
+        self.cells = cells;
     }
 
     fn get_index(&self, row: u32, column: u32) -> usize {
