@@ -65,6 +65,9 @@ const drawCells = () => {
 }
 
 const playPauseButton = document.getElementById("play-pause");
+const range = document.getElementById('range');
+const rangeValue = document.getElementById('range-value');
+rangeValue.textContent = range.value;
 
 const play = () => {
     playPauseButton.textContent = "⏸";
@@ -93,12 +96,25 @@ const isPaused = () => {
 
 const renderLoop = () => {
     // debugger;
-    universe.tick();
+    let i = 0;
+    let speed = tickSpeed();
+
+    while (i < speed){
+        universe.tick();
+        i++;
+    }
+    i = 0;
 
     drawGrid();
     drawCells();
 
     animationId = requestAnimationFrame(renderLoop);
+}
+
+const tickSpeed = () => {
+    let speed = range.value;
+    rangeValue.textContent = speed;
+    return speed;
 }
 
 canvas.addEventListener('click', event => {
